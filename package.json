@@ -1,0 +1,9 @@
+{
+  "name": "service-scripts",
+  "bin": {
+    "service-scripts": "./bin/service-scripts.js"
+  },
+  "dependencies": {
+    "dotenv": "^4.0.0"
+  }
+}
