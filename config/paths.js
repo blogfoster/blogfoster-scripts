@@ -1,10 +1,10 @@
 const path = require('path')
 
-const appDirectory = process.cwd()
-const resolveAppDirectory = relativePath =>
-  path.resolve(appDirectory, relativePath)
+const appRoot = process.cwd()
+const resolveAppDirectory = relativePath => path.resolve(appRoot, relativePath)
 
 module.exports = {
+  appRoot,
   appBuild: resolveAppDirectory('dist'),
   appIndexJs: resolveAppDirectory('src/index.js'),
   appPackageJson: resolveAppDirectory('package.json'),
