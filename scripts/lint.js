@@ -1,7 +1,7 @@
 const CLIEngine = require('eslint').CLIEngine
 const paths = require('../config/paths')
 
-const defaultESLintConfig = {
+const defaultConfig = {
   useEslintrc: false,
   parserOptions: {
     ecmaVersion: 6
@@ -15,7 +15,11 @@ const defaultESLintConfig = {
   }
 }
 
-const engine = new CLIEngine({ baseConfig: defaultESLintConfig })
+const appPackageJson = require(paths.appPackageJson)
+const customConfig = appPackageJson.hasOwnProperty('eslintConfig')
+const baseConfig = customConfig ? appPackageJson.eslintConfig : defaultConfig
+
+const engine = new CLIEngine({ baseConfig })
 const formatter = engine.getFormatter('stylish')
 const report = engine.executeOnFiles([paths.appSrc])
 
