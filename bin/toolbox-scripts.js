@@ -3,8 +3,9 @@
 const script = process.argv.length > 1 ? process.argv[2] : undefined
 
 switch (script) {
-  case 'start':
-  case 'lint': {
+  case 'eslint':
+  case 'prettier':
+  case 'start': {
     require('dotenv').config({ path: require('../config/paths').dotenv })
 
     require(`../scripts/${script}.js`)
@@ -12,6 +13,8 @@ switch (script) {
   }
   default: {
     console.log(`Unknwon script "${script}".`)
+    console.log()
+
     process.exit(1)
   }
 }

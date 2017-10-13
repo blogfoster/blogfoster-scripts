@@ -1,7 +1,10 @@
-const path = require('path')
+const { resolve } = require('path')
 
+const scriptsRoot = resolve(__dirname, '../')
 const appRoot = process.cwd()
-const resolveAppDirectory = relativePath => path.resolve(appRoot, relativePath)
+
+const resolveAppDirectory = relativePath => resolve(appRoot, relativePath)
+const resolveScriptsDirectory = relativePath => resolve(scriptsRoot, relativePath)
 
 module.exports = {
   appRoot,
@@ -9,5 +12,8 @@ module.exports = {
   appIndexJs: resolveAppDirectory('src/index.js'),
   appPackageJson: resolveAppDirectory('package.json'),
   appSrc: resolveAppDirectory('src'),
-  dotenv: resolveAppDirectory('.env')
+  dotenv: resolveAppDirectory('.env'),
+  scriptsRoot,
+  scriptsConfig: resolveScriptsDirectory('config'),
+  scriptsAppConfig: resolveScriptsDirectory('.appConfig')
 }

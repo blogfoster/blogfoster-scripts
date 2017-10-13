@@ -1,20 +1,11 @@
 const CLIEngine = require('eslint').CLIEngine
+
 const paths = require('../config/paths')
 
-const defaultConfig = {
+const defaultConfig = Object.assign({}, require('../config/.eslintrc'), {
   useEslintrc: false,
-  ignore: false,
-  parserOptions: {
-    ecmaVersion: 6
-  },
-  env: {
-    node: true
-  },
-  extends: ['eslint:recommended', 'prettier'],
-  rules: {
-    'no-console': 'off'
-  }
-}
+  ignore: false
+})
 
 const appPackageJson = require(paths.appPackageJson)
 const customConfig = appPackageJson.hasOwnProperty('eslintConfig')
