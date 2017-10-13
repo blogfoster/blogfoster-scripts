@@ -15,10 +15,11 @@ const defaultESLintConfig = {
   }
 }
 
-const cli = new CLIEngine({ baseConfig: defaultESLintConfig })
-const report = cli.executeOnFiles([paths.appSrc])
+const engine = new CLIEngine({ baseConfig: defaultESLintConfig })
+const formatter = engine.getFormatter('stylish')
+const report = engine.executeOnFiles([paths.appSrc])
 
-// TODO: print linting report
+console.log(formatter(report.results))
 
 if (report.errorCount > 0) {
   process.exit(1)
