@@ -1,9 +1,42 @@
 {
+  "scripts": {
+    "lint": "eslint .",
+    "format": "prettier '**/*.{js,json}'"
+  },
   "name": "toolbox-scripts",
   "bin": {
     "toolbox-scripts": "./bin/toolbox-scripts.js"
   },
   "dependencies": {
     "dotenv": "^4.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.8.0",
+    "eslint-config-prettier": "^2.6.0",
+    "prettier": "^1.7.4"
+  },
+  "eslintConfig": {
+    "parserOptions": {
+      "ecmaVersion": 6
+    },
+    "env": {
+      "node": true
+    },
+    "extends": ["eslint:recommended", "prettier"],
+    "rules": {
+      "no-console": "off"
+    }
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "overrides": [
+      {
+        "files": "**/*.json",
+        "options": {
+          "parser": "json"
+        }
+      }
+    ]
   }
 }
