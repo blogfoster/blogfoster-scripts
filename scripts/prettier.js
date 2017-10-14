@@ -3,7 +3,7 @@ const { existsSync } = require('fs')
 const { spawnSync } = require('child_process')
 
 const paths = require('../config/paths')
-const ensureWriteFile = require('../util/ensureWriteFile')
+const ensureWriteFileSync = require('../util/ensureWriteFileSync')
 
 const prettierPath = resolve(paths.scriptsRoot, 'node_modules/.bin/prettier')
 const prettierExists = existsSync(prettierPath)
@@ -19,54 +19,52 @@ const arg = process.argv.length > 2 ? process.argv[3] : undefined
 const supportedArgs = ['--debug-check', '--list-different']
 const supportedArg = supportedArgs.includes(arg) ? arg : undefined
 
-let configPathOverride
-const configOverride = appPackageJson.hasOwnProperty('prettier')
-if (configOverride) {
-  const appConfigPath = resolve(paths.scriptsAppConfig, '.prettierrc.json')
+const defaultConfigPath = resolve(paths.scriptsRoot, 'config/.prettierrc.json')
+const defaultIgnorePath = resolve(paths.scriptsRoot, 'config/.prettierignore')
+const appConfigCopyPath = resolve(paths.scriptsAppConfig, '.prettierrc.json')
+const appIgnoreCopyPath = resolve(paths.scriptsAppConfig, '.prettierignore')
 
+let configPathOverride
+if (appPackageJson.hasOwnProperty('prettier')) {
   try {
-    ensureWriteFile(appConfigPath, JSON.stringify(appPackageJson.prettier))
-    configPathOverride = appConfigPath
+    ensureWriteFileSync(
+      appConfigCopyPath,
+      JSON.stringify(appPackageJson.prettier)
+    )
+    configPathOverride = appConfigCopyPath
   } catch (err) {
-    console.log('Could not create ".prettierrc.json"')
+    console.log('Could not copy content of "prettier".')
     console.log()
-    console.log(err);
+    console.log(err)
 
     process.exit(1)
   }
 }
 
 let ignorePathOverride
-const ignoreOverride = appPackageJson.hasOwnProperty('prettierIgnore')
-if (ignoreOverride) {
-  const appIgnorePath = resolve(paths.scriptsAppConfig, '.prettierignore')
-  const data = appPackageJson.prettierIgnore.join('\n')
-
+if (appPackageJson.hasOwnProperty('prettierIgnore')) {
   try {
-    ensureWriteFile(appIgnorePath, data)
+    ensureWriteFileSync(
+      appIgnoreCopyPath,
+      appPackageJson.prettierIgnore.join('\n')
+    )
 
-    ignorePathOverride = appIgnorePath
+    ignorePathOverride = appIgnoreCopyPath
   } catch (err) {
-    console.log('Could not create ".prettierignore"')
+    console.log('Could not copy content of "prettierIgnore".')
     console.log()
-    console.log(err);
+    console.log(err)
 
     process.exit(1)
   }
 }
 
-const prettierConfigPath =
-  configPathOverride || resolve(paths.scriptsRoot, 'config/.prettierrc.json')
-
-const prettierIgnorePath =
-  ignorePathOverride || resolve(paths.scriptsRoot, 'config/.prettierignore')
-
 const prettierArgs = [
   supportedArg || '--write',
   '--config',
-  prettierConfigPath,
+  configPathOverride || defaultConfigPath,
   '--ignore-path',
-  prettierIgnorePath,
+  ignorePathOverride || defaultIgnorePath,
   `**/*.{js,json}`
 ]
 

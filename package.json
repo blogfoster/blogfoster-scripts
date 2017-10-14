@@ -3,9 +3,9 @@
     "lint": "eslint .",
     "format": "prettier '**/*.{js,json}'"
   },
-  "name": "toolbox-scripts",
+  "name": "toolkit",
   "bin": {
-    "toolbox-scripts": "./bin/toolbox-scripts.js"
+    "toolkit": "./bin/toolkit.js"
   },
   "dependencies": {
     "dotenv": "^4.0.0",
@@ -24,7 +24,10 @@
     "env": {
       "node": true
     },
-    "extends": ["eslint:recommended","prettier"],
+    "extends": [
+      "eslint:recommended",
+      "prettier"
+    ],
     "rules": {
       "no-console": "off"
     }
