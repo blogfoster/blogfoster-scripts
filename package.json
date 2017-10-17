@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "lint": "eslint .",
-    "format": "prettier '**/*.{js,json}'"
+    "eslint": "eslint .",
+    "prettier": "prettier '**/*.{js,json}'"
   },
   "name": "toolkit",
   "bin": {
@@ -24,10 +24,7 @@
     "env": {
       "node": true
     },
-    "extends": [
-      "eslint:recommended",
-      "prettier"
-    ],
+    "extends": ["eslint:recommended", "prettier"],
     "rules": {
       "no-console": "off"
     }

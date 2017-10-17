@@ -1,21 +1,16 @@
 const CLIEngine = require('eslint').CLIEngine
+const { projectSrc, selfESLintConfig } = require('../util/describe-project')
 
-const paths = require('../config/paths')
-
-const defaultConfig = Object.assign({}, require('../config/.eslintrc'), {
+const baseConfig = Object.assign({}, require(selfESLintConfig), {
   useEslintrc: false,
   ignore: false
 })
-
-const appPackageJson = require(paths.appPackageJson)
-const customConfig = appPackageJson.hasOwnProperty('eslintConfig')
-const customIgnore = appPackageJson.hasOwnProperty('eslintIgnore')
-const baseConfig = customConfig ? appPackageJson.eslintConfig : defaultConfig
-const ignorePattern = customIgnore ? appPackageJson.eslintIgnore : undefined
+// not yet implemented
+const ignorePattern = undefined
 
 const engine = new CLIEngine({ baseConfig, ignorePattern })
 const formatter = engine.getFormatter('stylish')
-const report = engine.executeOnFiles([paths.appSrc])
+const report = engine.executeOnFiles([projectSrc])
 
 console.log(formatter(report.results))
 

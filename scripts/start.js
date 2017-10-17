@@ -1,3 +1,3 @@
-const paths = require('../config/paths')
+const { projectIndexJs } = require('../util/describe-project')
 
-require(paths.appIndexJs)
+require(projectIndexJs)
