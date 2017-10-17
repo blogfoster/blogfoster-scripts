@@ -26,7 +26,7 @@ const result = spawnSync(selfPrettierBin, prettierArgs, {
 })
 
 if (result.error) {
-  console.log('"format" failed with the following error:')
+  console.log('Command failed with the following error:')
   console.log()
   console.log(result.error)
 
