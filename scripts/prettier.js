@@ -6,8 +6,8 @@ const {
   selfPrettierIgnore
 } = require("../util/describe-project");
 
-const userOption = process.argv.length > 2 ? process.argv[3] : undefined;
 const supportedOptions = ["--debug-check", "--list-different"];
+const userOption = process.argv.length > 2 ? process.argv[3] : undefined;
 const option = supportedOptions.includes(userOption) ? userOption : undefined;
 
 const prettierArgs = [

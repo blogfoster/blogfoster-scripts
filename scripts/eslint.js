@@ -9,9 +9,9 @@ const baseConfig = Object.assign({}, require(selfESLintConfig), {
 const ignorePattern = undefined;
 
 const engine = new CLIEngine({ baseConfig, ignorePattern });
-const formatter = engine.getFormatter("stylish");
 const report = engine.executeOnFiles([projectSrc]);
 
+const formatter = engine.getFormatter("stylish");
 console.log(formatter(report.results));
 
 if (report.errorCount > 0) {

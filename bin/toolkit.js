@@ -6,10 +6,6 @@ switch (script) {
   case "eslint":
   case "prettier":
   case "start": {
-    require("dotenv").config({
-      path: require("../util/describe-project").dotenv
-    });
-
     require(`../scripts/${script}.js`);
     break;
   }
