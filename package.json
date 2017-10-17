@@ -1,7 +1,7 @@
 {
   "scripts": {
     "eslint": "eslint .",
-    "prettier": "prettier '**/*.{js,json}'"
+    "prettier": "prettier './**/*.{js,json}'"
   },
   "name": "toolkit",
   "bin": {
@@ -30,8 +30,6 @@
     }
   },
   "prettier": {
-    "semi": false,
-    "singleQuote": true,
     "overrides": [
       {
         "files": "**/*.json",

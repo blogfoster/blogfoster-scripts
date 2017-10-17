@@ -1,34 +1,34 @@
-const { spawnSync } = require('child_process')
+const { spawnSync } = require("child_process");
 const {
   projectSrc,
   selfPrettierBin,
   selfPrettierConfig,
   selfPrettierIgnore
-} = require('../util/describe-project')
+} = require("../util/describe-project");
 
-const userOption = process.argv.length > 2 ? process.argv[3] : undefined
-const supportedOptions = ['--debug-check', '--list-different']
-const option = supportedOptions.includes(userOption) ? userOption : undefined
+const userOption = process.argv.length > 2 ? process.argv[3] : undefined;
+const supportedOptions = ["--debug-check", "--list-different"];
+const option = supportedOptions.includes(userOption) ? userOption : undefined;
 
 const prettierArgs = [
-  option || '--write',
-  '--config',
+  option || "--write",
+  "--config",
   selfPrettierConfig,
-  '--ignore-path',
+  "--ignore-path",
   selfPrettierIgnore,
   `./**/*.{js,json}`
-]
+];
 
 const result = spawnSync(selfPrettierBin, prettierArgs, {
   env: process.env,
   cwd: projectSrc,
-  stdio: 'inherit'
-})
+  stdio: "inherit"
+});
 
 if (result.error) {
-  console.log('Command failed with the following error:')
-  console.log()
-  console.log(result.error)
+  console.log("Command failed with the following error:");
+  console.log();
+  console.log(result.error);
 
-  process.exit(1)
+  process.exit(1);
 }

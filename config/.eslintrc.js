@@ -5,8 +5,8 @@ module.exports = {
   env: {
     node: true
   },
-  extends: ['eslint:recommended', 'prettier'],
+  extends: ["eslint:recommended", "prettier"],
   rules: {
-    'no-console': 'off'
+    "no-console": "off"
   }
-}
+};

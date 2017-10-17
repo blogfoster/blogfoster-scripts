@@ -1,3 +1,4 @@
-const { projectIndexJs } = require('../util/describe-project')
+const { projectIndexJs } = require("../util/describe-project");
 
-require(projectIndexJs)
+// TODO: make sure file exists
+require(projectIndexJs);

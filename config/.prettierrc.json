@@ -1,6 +1,4 @@
 {
-  "semi": false,
-  "singleQuote": true,
   "overrides": [
     {
       "files": "**/*.json",
