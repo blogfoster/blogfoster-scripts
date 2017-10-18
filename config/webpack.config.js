@@ -1,10 +1,12 @@
-const { projectBuild, projectIndexJs } = require("../util/paths");
+const { projectBuild, projectIndexJs, projectSrc } = require("../util/paths");
 
 module.exports = {
-  target: "node",
+  context: projectSrc,
   entry: projectIndexJs,
   output: {
     filename: "index.js",
     path: projectBuild
-  }
+  },
+  devtool: "source-map",
+  target: "node"
 };
