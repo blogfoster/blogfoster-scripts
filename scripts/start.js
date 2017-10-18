@@ -1,6 +1,6 @@
-const { dotenv, projectIndexJs } = require("../util/describe-project");
+const { dotenv, projectBuildIndexJs } = require("../util/describe-project");
 
 require("dotenv").config({ path: dotenv });
 
 // TODO: make sure file exists
-require(projectIndexJs);
+require(projectBuildIndexJs);
