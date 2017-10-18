@@ -10,7 +10,7 @@ const resolveSelfDirectory = relativePath => resolve(selfRoot, relativePath);
 module.exports = {
   projectRoot,
   projectBuild: resolveProjectDirectory("./dist"),
-  projectBuildIndexJs: resolveProjectDirectory("./src/index.js"),
+  projectBuildIndexJs: resolveProjectDirectory("./dist/index.js"),
   projectIndexJs: resolveProjectDirectory("./src/index.js"),
   projectPackageJson: resolveProjectDirectory("./package.json"),
   projectSrc: resolveProjectDirectory("./src"),
