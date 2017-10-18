@@ -7,13 +7,14 @@ const resolveProjectDirectory = relativePath =>
   resolve(projectRoot, relativePath);
 const resolveSelfDirectory = relativePath => resolve(selfRoot, relativePath);
 
-module.exports = {
+const paths = {
   projectRoot,
   projectBuild: resolveProjectDirectory("./dist"),
   projectBuildIndexJs: resolveProjectDirectory("./dist/index.js"),
   projectIndexJs: resolveProjectDirectory("./src/index.js"),
   projectPackageJson: resolveProjectDirectory("./package.json"),
   projectSrc: resolveProjectDirectory("./src"),
+  projectTest: resolveProjectDirectory("./test"),
   dotenv: resolveProjectDirectory("./.env"),
   selfRoot,
   selfESLintConfig: resolveSelfDirectory("./config/.eslintrc.js"),
@@ -22,3 +23,5 @@ module.exports = {
   selfPrettierConfig: resolveSelfDirectory("./config/.prettierrc.json"),
   selfPrettierIgnore: resolveSelfDirectory("./config/.prettierignore")
 };
+
+module.exports = paths;
