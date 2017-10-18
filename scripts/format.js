@@ -26,9 +26,9 @@ const result = spawnSync(selfPrettierBin, prettierArgs, {
 });
 
 if (result.error) {
-  console.log("Command failed with the following error:");
-  console.log();
-  console.log(result.error);
+  console.error("Command failed with the following error:");
+  console.error();
+  console.error(result.error);
 
   process.exit(1);
 }

@@ -3,8 +3,8 @@
 const script = process.argv.length > 1 ? process.argv[2] : undefined;
 
 switch (script) {
-  case "eslint":
-  case "prettier":
+  case "lint":
+  case "format":
   case "start": {
     require(`../scripts/${script}.js`);
     break;

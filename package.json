@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "eslint": "eslint .",
-    "prettier": "prettier './**/*.{js,json}'"
+    "lint": "eslint .",
+    "format": "prettier './**/*.{js,json}'"
   },
   "name": "toolkit",
   "bin": {
