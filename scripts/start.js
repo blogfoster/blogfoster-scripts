@@ -8,6 +8,9 @@ if (!existsSync(projectBuildIndexJs)) {
   process.exit(1);
 }
 
+// make sure .env file is loaded into `process.env`
 require("dotenv").config({ path: dotenv });
+// make sure to support source-maps
 require("source-map-support").install();
+
 require(projectBuildIndexJs);
