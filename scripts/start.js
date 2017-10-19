@@ -9,4 +9,5 @@ if (!existsSync(projectBuildIndexJs)) {
 }
 
 require("dotenv").config({ path: dotenv });
+require("source-map-support").install();
 require(projectBuildIndexJs);
