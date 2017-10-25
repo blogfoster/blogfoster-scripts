@@ -1,5 +1,5 @@
 const { existsSync } = require("fs");
-const { dotenv, projectBuildIndexJs } = require("../util/paths");
+const { dotenv, projectBuildIndexJs } = require("../config/paths");
 
 if (!existsSync(projectBuildIndexJs)) {
   console.error('Bundle doesn\'t exist. Did you forget to run "build"?');

@@ -1,5 +1,5 @@
 const CLIEngine = require("eslint").CLIEngine;
-const { projectSrc, selfESLintConfig } = require("../util/paths");
+const { projectSrc, selfESLintConfig } = require("../config/paths");
 
 const baseConfig = Object.assign({}, require(selfESLintConfig), {
   useEslintrc: false,

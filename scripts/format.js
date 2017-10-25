@@ -4,7 +4,7 @@ const {
   selfPrettierBin,
   selfPrettierConfig,
   selfPrettierIgnore
-} = require("../util/paths");
+} = require("../config/paths");
 
 const supportedOptions = ["--debug-check", "--list-different"];
 const userOption = process.argv.length > 2 ? process.argv[3] : undefined;

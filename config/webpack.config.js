@@ -1,4 +1,4 @@
-const { projectBuild, projectIndexJs } = require("../util/paths");
+const { projectBuild, projectIndexJs } = require("./paths");
 
 module.exports = {
   entry: projectIndexJs,
