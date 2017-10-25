@@ -6,7 +6,7 @@ const {
   selfPrettierIgnore
 } = require("../config/paths");
 
-const supportedOptions = ["--debug-check", "--list-different"];
+const supportedOptions = ["--write", "--debug-check", "--list-different"];
 const userOption = process.argv.length > 2 ? process.argv[3] : undefined;
 const option = supportedOptions.includes(userOption) ? userOption : undefined;
 
