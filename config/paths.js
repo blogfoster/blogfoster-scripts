@@ -17,6 +17,7 @@ const paths = {
   projectTest: resolveProjectDirectory("./test"),
   dotenv: resolveProjectDirectory("./.env"),
   selfRoot,
+  selfNodeModules: resolveSelfDirectory("./node_modules"),
   selfESLintConfig: resolveSelfDirectory("./config/.eslintrc.js"),
   selfWebpackConfig: resolveSelfDirectory("./config/webpack.config.js"),
   selfPrettierBin: resolveSelfDirectory("./node_modules/.bin/prettier"),

@@ -1,4 +1,4 @@
-const { projectBuild, projectIndexJs } = require("./paths");
+const { projectBuild, projectIndexJs, selfNodeModules } = require("./paths");
 
 module.exports = {
   entry: projectIndexJs,
@@ -14,13 +14,16 @@ module.exports = {
         test: /\.js$/,
         exclude: /(node_modules)/,
         use: {
-          loader: "babel-loader",
+          loader: require.resolve("babel-loader"),
           options: {
-            presets: ["env"],
-            plugins: [require("babel-plugin-sitrep")]
+            presets: [require.resolve("babel-preset-env")],
+            plugins: [require.resolve("babel-plugin-sitrep")]
           }
         }
       }
     ]
+  },
+  resolve: {
+    modules: ["node_modules", selfNodeModules]
   }
 };
