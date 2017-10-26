@@ -5,7 +5,7 @@
   },
   "name": "toolkit",
   "bin": {
-    "toolkit": "./bin/toolkit.js"
+    "toolkit": "./bin/index.js"
   },
   "dependencies": {
     "babel-core": "^6.26.0",

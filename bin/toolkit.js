@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 const script = process.argv.length > 1 ? process.argv[2] : undefined;
 
 switch (script) {
@@ -11,8 +9,7 @@ switch (script) {
     break;
   }
   default: {
-    console.log(`Unknwon script "${script}".`);
-    console.log();
+    console.error(`Unknwon script "${script}".`);
 
     process.exit(1);
   }

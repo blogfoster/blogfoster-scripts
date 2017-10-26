@@ -11,7 +11,6 @@ compiler.run((err, stats) => {
     if (err.details) {
       console.error(err.details);
     }
-    console.error();
 
     process.exit(1);
   }
@@ -21,7 +20,6 @@ compiler.run((err, stats) => {
   // handle compilation errors
   if (stats.hasErrors()) {
     console.error(info.errors);
-    console.error();
 
     process.exit(1);
   }
@@ -29,7 +27,6 @@ compiler.run((err, stats) => {
   // print any warnings before anything else
   if (stats.hasWarnings()) {
     console.warn(info.warnings);
-    console.warn();
   }
 
   console.log(

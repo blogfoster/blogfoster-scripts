@@ -2,8 +2,7 @@ const { existsSync } = require("fs");
 const { dotenv, projectBuildIndexJs } = require("../config/paths");
 
 if (!existsSync(projectBuildIndexJs)) {
-  console.error('Bundle doesn\'t exist. Did you forget to run "build"?');
-  console.error();
+  console.error('Build doesn\'t exist. Did you forget to run "build"?');
 
   process.exit(1);
 }
