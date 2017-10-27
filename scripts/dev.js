@@ -1,7 +1,7 @@
 const webpack = require("webpack");
-const { selfWebpackConfigProd } = require("../config/paths");
+const { selfWebpackConfigDev } = require("../config/paths");
 
-const config = require(selfWebpackConfigProd);
+const config = require(selfWebpackConfigDev);
 const compiler = webpack(config);
 
 compiler.run((err, stats) => {

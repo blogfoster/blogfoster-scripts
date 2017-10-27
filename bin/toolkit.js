@@ -4,7 +4,8 @@ switch (script) {
   case "lint":
   case "format":
   case "build":
-  case "start": {
+  case "start":
+  case "dev": {
     require(`../scripts/${script}.js`);
     break;
   }

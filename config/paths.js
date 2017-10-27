@@ -9,20 +9,21 @@ const resolveSelfDirectory = relativePath => resolve(selfRoot, relativePath);
 
 const paths = {
   projectRoot,
+  selfRoot,
+  dotenv: resolveProjectDirectory("./.env"),
   projectBuild: resolveProjectDirectory("./dist"),
   projectBuildIndexJs: resolveProjectDirectory("./dist/index.js"),
   projectIndexJs: resolveProjectDirectory("./src/index.js"),
   projectPackageJson: resolveProjectDirectory("./package.json"),
   projectSrc: resolveProjectDirectory("./src"),
   projectTest: resolveProjectDirectory("./test"),
-  dotenv: resolveProjectDirectory("./.env"),
-  selfRoot,
-  selfNodeModules: resolveSelfDirectory("./node_modules"),
   selfESLintConfig: resolveSelfDirectory("./config/.eslintrc.js"),
-  selfWebpackConfig: resolveSelfDirectory("./config/webpack.config.js"),
+  selfNodeModules: resolveSelfDirectory("./node_modules"),
   selfPrettierBin: resolveSelfDirectory("./node_modules/.bin/prettier"),
   selfPrettierConfig: resolveSelfDirectory("./config/.prettierrc.json"),
-  selfPrettierIgnore: resolveSelfDirectory("./config/.prettierignore")
+  selfPrettierIgnore: resolveSelfDirectory("./config/.prettierignore"),
+  selfWebpackConfigDev: resolveSelfDirectory("./config/webpack.config.dev.js"),
+  selfWebpackConfigProd: resolveSelfDirectory("./config/webpack.config.prod.js")
 };
 
 module.exports = paths;
