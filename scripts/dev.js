@@ -3,8 +3,9 @@ const { selfWebpackConfigDev } = require("../config/paths");
 
 const config = require(selfWebpackConfigDev);
 const compiler = webpack(config);
+const watchOptions = {};
 
-compiler.run((err, stats) => {
+compiler.watch(watchOptions, (err, stats) => {
   // handle webpack configuration errors
   if (err) {
     console.error(err.stack || err);
