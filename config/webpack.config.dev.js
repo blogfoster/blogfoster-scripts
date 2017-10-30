@@ -2,7 +2,7 @@ const { projectBuild, projectIndexJs, selfNodeModules } = require("./paths");
 
 module.exports = {
   bail: true,
-  entry: [require.resolve("../util/console-polyfill"), projectIndexJs],
+  entry: [require.resolve("../util/console-group-polyfill"), projectIndexJs],
   output: {
     filename: "index.js",
     path: projectBuild

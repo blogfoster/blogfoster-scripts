@@ -5,7 +5,7 @@ module.exports = {
   env: {
     node: true
   },
-  extends: ["eslint:recommended", "prettier"],
+  extends: ["airbnb", "prettier"],
   rules: {
     "no-console": "off"
   }

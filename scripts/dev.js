@@ -1,8 +1,8 @@
 const webpack = require("webpack");
 const { selfWebpackConfigDev } = require("../config/paths");
+const webpackConfig = require(selfWebpackConfigDev);
 
-const config = require(selfWebpackConfigDev);
-const compiler = webpack(config);
+const compiler = webpack(webpackConfig);
 const watchOptions = {};
 
 compiler.watch(watchOptions, (err, stats) => {
