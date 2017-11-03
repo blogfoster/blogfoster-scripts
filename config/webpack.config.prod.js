@@ -14,6 +14,11 @@ module.exports = {
   devtool: "source-map",
   // Don't touch node core modules like "fs", "path", etc.
   target: "node",
+  // Don't touch module specific globals
+  node: {
+    __dirname: false,
+    __filename: false
+  },
   // Don't bundle modules located in `node_modules`
   externals: [nodeExternals()],
   module: {
