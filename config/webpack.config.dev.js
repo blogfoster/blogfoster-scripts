@@ -1,4 +1,5 @@
 const paths = require("./paths");
+const nodeExternals = require("webpack-node-externals");
 
 module.exports = {
   bail: true,
@@ -11,7 +12,10 @@ module.exports = {
     path: paths.projectBuild
   },
   devtool: "source-map",
+  // Don't touch node core modules like "fs", "path", etc.
   target: "node",
+  // Don't bundle modules located in `node_modules`
+  externals: [nodeExternals()],
   module: {
     rules: [
       {
