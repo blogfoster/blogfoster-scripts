@@ -1,11 +1,14 @@
-const { projectBuild, projectIndexJs, selfNodeModules } = require("./paths");
+const paths = require("./paths");
 
 module.exports = {
   bail: true,
-  entry: [require.resolve("../util/console-group-polyfill"), projectIndexJs],
+  entry: [
+    require.resolve("../util/console-group-polyfill"),
+    paths.projectIndexJs
+  ],
   output: {
     filename: "index.js",
-    path: projectBuild
+    path: paths.projectBuild
   },
   devtool: "source-map",
   target: "node",
@@ -25,6 +28,6 @@ module.exports = {
     ]
   },
   resolve: {
-    modules: ["node_modules", selfNodeModules]
+    modules: ["node_modules", paths.selfNodeModules]
   }
 };

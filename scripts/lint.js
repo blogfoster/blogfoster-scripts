@@ -1,7 +1,7 @@
-const CLIEngine = require("eslint").CLIEngine;
-const { projectSrc, selfESLintConfig } = require("../config/paths");
+const { CLIEngine } = require("eslint");
+const paths = require("../config/paths");
 
-const baseConfig = Object.assign({}, require(selfESLintConfig), {
+const baseConfig = Object.assign({}, require(paths.selfESLintConfig), {
   useEslintrc: false,
   ignore: false
 });
@@ -9,7 +9,7 @@ const baseConfig = Object.assign({}, require(selfESLintConfig), {
 const ignorePattern = undefined;
 
 const engine = new CLIEngine({ baseConfig, ignorePattern });
-const report = engine.executeOnFiles([projectSrc]);
+const report = engine.executeOnFiles([paths.projectSrc]);
 
 const formatter = engine.getFormatter("stylish");
 console.log(formatter(report.results));

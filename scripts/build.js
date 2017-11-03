@@ -1,6 +1,6 @@
 const webpack = require("webpack");
-const { selfWebpackConfigProd } = require("../config/paths");
-const webpackConfig = require(selfWebpackConfigProd);
+const paths = require("../config/paths");
+const webpackConfig = require(paths.selfWebpackConfigProd);
 
 const compiler = webpack(webpackConfig);
 
