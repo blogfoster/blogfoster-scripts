@@ -1,14 +1,16 @@
 const { CLIEngine } = require("eslint");
 const paths = require("../config/paths");
+const baseConfig = require(paths.selfESLintConfig);
 
-const baseConfig = Object.assign({}, require(paths.selfESLintConfig), {
-  useEslintrc: false,
-  ignore: false
-});
 // not yet implemented
 const ignorePattern = undefined;
 
-const engine = new CLIEngine({ baseConfig, ignorePattern });
+const engine = new CLIEngine({
+  baseConfig,
+  ignorePattern,
+  useEslintrc: false,
+  ignore: false
+});
 const report = engine.executeOnFiles([paths.projectSrc]);
 
 const formatter = engine.getFormatter("stylish");
