@@ -5,17 +5,16 @@ const webpackConfig = require(paths.selfWebpackConfigDev);
 
 const compiler = webpack(webpackConfig);
 const watchOptions = {};
-let serverProcess;
+let childProcess;
 
-const createServerProcess = () =>
+const startChildProcess = () =>
   spawn("node", [paths.projectBuildIndexJs], {
-    env: process.env,
     cwd: paths.projectSrc,
     stdio: "inherit"
   });
 
 compiler.watch(watchOptions, (err, stats) => {
-  // handle webpack configuration errors
+  // Handle webpack configuration errors
   if (err) {
     console.error(err.stack || err);
     if (err.details) {
@@ -27,14 +26,14 @@ compiler.watch(watchOptions, (err, stats) => {
 
   const info = stats.toJson();
 
-  // handle compilation errors
+  // Handle compilation errors
   if (stats.hasErrors()) {
     console.error(info.errors);
 
     process.exit(1);
   }
 
-  // print any warnings before anything else
+  // Print any warnings before anything else
   if (stats.hasWarnings()) {
     console.warn(info.warnings);
   }
@@ -45,11 +44,11 @@ compiler.watch(watchOptions, (err, stats) => {
     })
   );
 
-  if (serverProcess) {
+  if (childProcess) {
     // If the child process is already running, kill it so we can restart the
     // server on the same port
-    serverProcess.kill();
-    if (!serverProcess.killed) {
+    childProcess.kill();
+    if (!childProcess.killed) {
       console.error("Server in child process could not be killed");
 
       process.exit(1);
@@ -57,5 +56,5 @@ compiler.watch(watchOptions, (err, stats) => {
   }
 
   // Create the server in a child process
-  serverProcess = createServerProcess();
+  childProcess = startChildProcess();
 });
