@@ -3,9 +3,9 @@
     "lint": "eslint .",
     "format": "prettier './**/*.{js,json}'"
   },
-  "name": "toolkit",
+  "name": "blogfoster-scripts",
   "bin": {
-    "toolkit": "./bin/index.js"
+    "blogfoster-scripts": "./bin/index.js"
   },
   "dependencies": {
     "babel-core": "^6.26.0",

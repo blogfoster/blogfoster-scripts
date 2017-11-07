@@ -12,4 +12,4 @@
 //   process.exit(1);
 // }
 
-require("./toolkit");
+require("./blogfoster-scripts");
