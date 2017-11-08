@@ -1,25 +1,25 @@
-const paths = require("./paths");
-const nodeExternals = require("webpack-node-externals");
+const paths = require('./paths');
+const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
   bail: true,
   output: {
-    filename: "index.js",
+    filename: 'index.js',
     path: paths.projectBuild
   },
   entry: [
     // Include the console-group-polyfill because we want to support
     // "babel-plugin-sitrep" for older Node versions.
-    require.resolve("../util/console-group-polyfill"),
+    require.resolve('../util/console-group-polyfill'),
     // Make sure to load the project's .env file for the bundle.
-    require.resolve("../util/support-dotenv"),
+    require.resolve('../util/support-dotenv'),
     // Make sure to support source-maps for the bundle.
-    require.resolve("../util/support-source-maps"),
+    require.resolve('../util/support-source-maps'),
     paths.projectIndexJs
   ],
-  devtool: "source-map",
+  devtool: 'source-map',
   // Don't touch node core modules like "fs", "path", etc.
-  target: "node",
+  target: 'node',
   // Don't touch module specific globals
   node: {
     __dirname: false,
@@ -31,7 +31,7 @@ module.exports = {
   // When webpack is resolving modules, let it first look up modules in the
   // projects "node_modules" folder and only after that search in our own.
   resolve: {
-    modules: ["node_modules", paths.selfNodeModules]
+    modules: ['node_modules', paths.selfNodeModules]
   },
   module: {
     rules: [
@@ -39,16 +39,16 @@ module.exports = {
         test: /\.js$/,
         exclude: /(node_modules)/,
         use: {
-          loader: require.resolve("babel-loader"),
+          loader: require.resolve('babel-loader'),
           options: {
-            presets: [require.resolve("babel-preset-env")],
+            presets: [require.resolve('babel-preset-env')],
             plugins: [
-              require.resolve("babel-plugin-sitrep"),
+              require.resolve('babel-plugin-sitrep'),
               // TODO: Get rid of "transform-class-properties" when there's a
               // plugin for the class fields proposal.
               //
               // https://github.com/babel/proposals/issues/12
-              require.resolve("babel-plugin-transform-class-properties")
+              require.resolve('babel-plugin-transform-class-properties')
             ]
           }
         }

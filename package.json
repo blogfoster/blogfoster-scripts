@@ -24,12 +24,24 @@
   "devDependencies": {
     "eslint": "^4.9.0",
     "eslint-config-blogfoster": "^1.10.0",
+    "eslint-config-prettier": "^2.7.0",
     "prettier": "^1.7.4"
   },
   "eslintConfig": {
-    "extends": ["blogfoster"]
+    "extends": ["blogfoster", "prettier"],
+    "rules": {
+      "global-require": "off",
+      "no-console": "off",
+      "no-underscore-dangle": "off",
+      "import/no-dynamic-require": "off",
+      "import/newline-after-import": "off",
+      "import/prefer-default-export": "off",
+      "import/max-dependencies": "off"
+    }
   },
+  "//": "TODO: Point local Prettier to this config",
   "prettier": {
+    "singleQuote": true,
     "overrides": [
       {
         "files": "**/*.json",

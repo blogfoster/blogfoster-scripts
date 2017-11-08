@@ -1,11 +1,11 @@
-const { CLIEngine } = require("eslint");
-const paths = require("../config/paths");
+const { CLIEngine } = require('eslint');
+const paths = require('../config/paths');
 const baseConfig = require(paths.selfESLintConfig);
 
 // Not yet implemented
 const ignorePattern = undefined;
 const optionalArg = process.argv[3];
-const shouldFix = optionalArg === "--fix";
+const shouldFix = optionalArg === '--fix';
 
 const engine = new CLIEngine({
   baseConfig,
@@ -23,7 +23,7 @@ if (shouldFix) {
 }
 
 // Print the linting results
-const formatter = engine.getFormatter("stylish");
+const formatter = engine.getFormatter('stylish');
 console.log(formatter(report.results));
 
 if (report.errorCount > 0) {

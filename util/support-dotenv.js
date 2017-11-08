@@ -1,3 +1,3 @@
-const paths = require("../config/paths");
+const paths = require('../config/paths');
 
-require("dotenv").config({ path: paths.dotenv });
+require('dotenv').config({ path: paths.dotenv });

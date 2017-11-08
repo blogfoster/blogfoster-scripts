@@ -1,5 +1,5 @@
-const webpack = require("webpack");
-const paths = require("../config/paths");
+const webpack = require('webpack');
+const paths = require('../config/paths');
 const webpackConfig = require(paths.selfWebpackConfigProd);
 
 const compiler = webpack(webpackConfig);

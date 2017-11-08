@@ -1,6 +1,6 @@
-const { spawn } = require("child_process");
-const webpack = require("webpack");
-const paths = require("../config/paths");
+const { spawn } = require('child_process');
+const webpack = require('webpack');
+const paths = require('../config/paths');
 const webpackConfig = require(paths.selfWebpackConfigDev);
 
 const compiler = webpack(webpackConfig);
@@ -8,9 +8,9 @@ const watchOptions = {};
 let childProcess;
 
 const startChildProcess = () =>
-  spawn("node", [paths.projectBuildIndexJs], {
+  spawn('node', [paths.projectBuildIndexJs], {
     cwd: paths.projectSrc,
-    stdio: "inherit"
+    stdio: 'inherit'
   });
 
 compiler.watch(watchOptions, (err, stats) => {
@@ -49,7 +49,7 @@ compiler.watch(watchOptions, (err, stats) => {
     // server on the same port
     childProcess.kill();
     if (!childProcess.killed) {
-      console.error("Server in child process could not be killed");
+      console.error('Server in child process could not be killed');
 
       process.exit(1);
     }
