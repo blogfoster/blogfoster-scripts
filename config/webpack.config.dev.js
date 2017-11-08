@@ -26,6 +26,7 @@ module.exports = {
     __filename: false
   },
   // Don't bundle modules located in `node_modules`
+  // TODO: Check if both `node_modules` folders are ignored
   externals: [nodeExternals()],
   // When webpack is resolving modules, let it first look up modules in the
   // projects "node_modules" folder and only after that search in our own.
