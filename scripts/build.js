@@ -5,7 +5,7 @@ const webpackConfig = require(paths.selfWebpackConfigProd);
 const compiler = webpack(webpackConfig);
 
 compiler.run((err, stats) => {
-  // handle webpack configuration errors
+  // Handle webpack configuration errors
   if (err) {
     console.error(err.stack || err);
     if (err.details) {
@@ -17,14 +17,14 @@ compiler.run((err, stats) => {
 
   const info = stats.toJson();
 
-  // handle compilation errors
+  // Handle compilation errors
   if (stats.hasErrors()) {
     console.error(info.errors);
 
     process.exit(1);
   }
 
-  // print any warnings before anything else
+  // Print any warnings before anything else
   if (stats.hasWarnings()) {
     console.warn(info.warnings);
   }
