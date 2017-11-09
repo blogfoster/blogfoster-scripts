@@ -1,6 +1,7 @@
 const paths = require('./paths');
 const nodeExternals = require('webpack-node-externals');
 
+// TODO: Don't use `projectBuild` but a temporary directory instead
 module.exports = {
   bail: true,
   output: {
