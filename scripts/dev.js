@@ -3,15 +3,32 @@ const webpack = require('webpack');
 const paths = require('../config/paths');
 const webpackDevConfig = require(paths.selfWebpackConfigDev);
 
-const compiler = webpack(webpackDevConfig);
-const watchOptions = {};
-let childProcess;
-
 const startChildProcess = () =>
   spawn('node', [paths.projectBuildIndexJs], {
     cwd: paths.projectSrc,
     stdio: 'inherit'
   });
+
+// There's a bug in webpack where it compiles multiple times when the entry file
+// changed right before the watch started. This is a workaround to prevent
+// multiple unnecessary compilations.
+//
+// https://github.com/webpack/watchpack/issues/25
+const fixWatchLoop = compiler => {
+  compiler.plugin('watch-run', (watching, callback) => {
+    watching.startTime += 11000;
+    callback();
+  });
+  compiler.plugin('done', stats => {
+    stats.startTime -= 11000;
+  });
+
+  return compiler;
+};
+
+const compiler = fixWatchLoop(webpack(webpackDevConfig));
+const watchOptions = {};
+let childProcess;
 
 compiler.watch(watchOptions, (err, stats) => {
   // Handle webpack configuration errors

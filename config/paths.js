@@ -1,11 +1,11 @@
-const { resolve } = require('path');
+const path = require('path');
 
 const projectRoot = process.cwd();
-const selfRoot = resolve(__dirname, '../');
+const selfRoot = path.resolve(__dirname, '../');
 
 const resolveProjectDirectory = relativePath =>
-  resolve(projectRoot, relativePath);
-const resolveSelfDirectory = relativePath => resolve(selfRoot, relativePath);
+  path.resolve(projectRoot, relativePath);
+const resolveSelfDirectory = relativePath => path.resolve(selfRoot, relativePath);
 
 const paths = {
   projectRoot,

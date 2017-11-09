@@ -39,7 +39,6 @@
       "import/max-dependencies": "off"
     }
   },
-  "//": "TODO: Point local Prettier to this config",
   "prettier": {
     "singleQuote": true,
     "overrides": [
