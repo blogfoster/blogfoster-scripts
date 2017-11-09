@@ -32,7 +32,6 @@ module.exports = {
           options: {
             presets: [require.resolve('babel-preset-env')],
             plugins: [
-              require.resolve('babel-plugin-sitrep'),
               // TODO: Get rid of "transform-class-properties" when there's a
               // plugin for the class fields proposal
               //
