@@ -1,8 +1,8 @@
 const webpack = require('webpack');
 const paths = require('../config/paths');
-const webpackConfig = require(paths.selfWebpackConfigProd);
+const webpackProdConfig = require(paths.selfWebpackConfigProd);
 
-const compiler = webpack(webpackConfig);
+const compiler = webpack(webpackProdConfig);
 
 compiler.run((err, stats) => {
   // Handle webpack configuration errors

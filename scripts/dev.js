@@ -1,9 +1,9 @@
 const { spawn } = require('child_process');
 const webpack = require('webpack');
 const paths = require('../config/paths');
-const webpackConfig = require(paths.selfWebpackConfigDev);
+const webpackDevConfig = require(paths.selfWebpackConfigDev);
 
-const compiler = webpack(webpackConfig);
+const compiler = webpack(webpackDevConfig);
 const watchOptions = {};
 let childProcess;
 
