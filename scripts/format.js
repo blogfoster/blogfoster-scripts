@@ -14,7 +14,7 @@ const prettierArgs = [
   `./**/*.{js,json}`
 ];
 
-const result = spawnSync(paths.selfPrettierBin, prettierArgs, {
+const result = spawnSync(paths.selfPrettier, prettierArgs, {
   env: process.env,
   cwd: paths.projectSrc,
   stdio: 'inherit'

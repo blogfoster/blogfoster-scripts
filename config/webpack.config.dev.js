@@ -12,8 +12,6 @@ module.exports = {
     // Include the console-group-polyfill because we want to support
     // "babel-plugin-sitrep" for older Node versions
     require.resolve('../util/console-group-polyfill'),
-    // Make sure to load the project's .env file for the bundle
-    require.resolve('../util/support-dotenv'),
     // Make sure to support source-maps for the bundle
     require.resolve('../util/support-source-maps'),
     paths.projectIndexJs
