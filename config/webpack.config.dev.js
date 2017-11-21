@@ -19,11 +19,8 @@ module.exports = {
   devtool: 'source-map',
   // Don't touch node core modules like "fs", "path", etc.
   target: 'node',
-  // Don't touch module specific globals
-  node: {
-    __dirname: false,
-    __filename: false
-  },
+  // Don't touch module specific globals like __dirname, __filename etc.
+  node: false,
   // Don't bundle modules located in the project's `node_modules` folder
   externals: [nodeExternals()],
   // When webpack is resolving modules, let it first look up modules in the
