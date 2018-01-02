@@ -9,8 +9,10 @@ const resolveSelfDirectory = relativePath =>
   path.resolve(selfRoot, relativePath);
 
 module.exports = {
-  projectBuild: resolveProjectDirectory('dist'),
-  projectBuildIndexJs: resolveProjectDirectory('dist/index.js'),
+  projectAssets: resolveProjectDirectory('assets'),
+  projectBuild: resolveProjectDirectory('build'),
+  projectBuildAssets: resolveProjectDirectory('build/assets'),
+  projectBuildIndexJs: resolveProjectDirectory('build/index.js'),
   projectIndexJs: resolveProjectDirectory('src/index.js'),
   projectSrc: resolveProjectDirectory('src'),
   selfESLintConfig: resolveSelfDirectory('config/.eslintrc.js'),

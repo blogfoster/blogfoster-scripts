@@ -1,5 +1,6 @@
 const paths = require('./paths');
 const nodeExternals = require('webpack-node-externals');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 // TODO: Don't use `projectBuild` but a temporary directory instead
 module.exports = {
@@ -49,5 +50,10 @@ module.exports = {
         }
       }
     ]
-  }
+  },
+  plugins: [
+    new CopyWebpackPlugin([
+      { from: paths.projectAssets, to: paths.projectBuildAssets }
+    ])
+  ]
 };
