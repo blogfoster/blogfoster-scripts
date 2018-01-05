@@ -1,12 +1,12 @@
 const { spawnSync } = require('child_process');
 const paths = require('../config/paths');
 
-const supportedOptions = ['--write', '--debug-check', '--list-different'];
+const supportedOptions = ['--check'];
 const userOption = process.argv.length > 2 ? process.argv[3] : undefined;
 const option = supportedOptions.includes(userOption) ? userOption : undefined;
 
 const prettierArgs = [
-  option || '--write',
+  option === '--check' ? '--list-different' : '--write',
   '--config',
   paths.selfPrettierConfig,
   '--ignore-path',
@@ -14,7 +14,7 @@ const prettierArgs = [
   `./**/*.{js,json}`
 ];
 
-const result = spawnSync(paths.selfPrettier, prettierArgs, {
+const result = spawnSync(paths.projectPrettier, prettierArgs, {
   env: process.env,
   cwd: paths.projectSrc,
   stdio: 'inherit'

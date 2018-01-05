@@ -5,7 +5,7 @@ const baseConfig = require(paths.selfESLintConfig);
 // Not yet implemented
 const ignorePattern = undefined;
 const optionalArg = process.argv[3];
-const shouldFix = optionalArg === '--fix';
+const shouldFix = optionalArg !== '--check';
 
 const engine = new CLIEngine({
   baseConfig,
@@ -16,16 +16,19 @@ const engine = new CLIEngine({
 });
 
 const report = engine.executeOnFiles([paths.projectSrc]);
+let errorCount = report.errorCount;
 
 if (shouldFix) {
   // Write any fixes to disk
   CLIEngine.outputFixes(report);
+  errorCount -= report.fixableErrorCount;
 }
 
 // Print the linting results
-const formatter = engine.getFormatter('stylish');
-console.log(formatter(report.results));
+const formatter = CLIEngine.getFormatter();
+const output = formatter(report.results);
+console.log(output);
 
-if (report.errorCount > 0) {
+if (errorCount > 0) {
   process.exit(1);
 }

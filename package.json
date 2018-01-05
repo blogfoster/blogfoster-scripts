@@ -1,11 +1,12 @@
 {
-  "scripts": {
-    "lint": "eslint .",
-    "format": "prettier './**/*.{js,json}'"
-  },
   "name": "blogfoster-scripts",
+  "version": "0.0.1",
   "bin": {
     "blogfoster-scripts": "./bin/index.js"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "format": "prettier --write './**/*.{js,json}'"
   },
   "dependencies": {
     "babel-core": "^6.26.0",
@@ -16,6 +17,8 @@
     "babel-preset-env": "^1.6.1",
     "copy-webpack-plugin": "^4.3.1",
     "eslint": "^4.14.0",
+    "eslint-config-blogfoster": "^1.10.0",
+    "eslint-config-prettier": "^2.9.0",
     "prettier": "^1.9.2",
     "source-map-support": "^0.5.0",
     "webpack": "^3.10.0",
