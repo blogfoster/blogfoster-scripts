@@ -42,8 +42,14 @@ module.exports = {
     ]
   },
   plugins: [
+    // We're using the `context` property in addition to the `from` property to
+    // not throw any errors when the "assets" folder doesn't exist.
     new CopyWebpackPlugin([
-      { from: paths.projectAssets, to: paths.projectBuildAssets }
+      {
+        context: paths.projectAssets,
+        from: '**/*',
+        to: paths.projectBuildAssets
+      }
     ])
   ]
 };
