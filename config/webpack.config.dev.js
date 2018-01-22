@@ -1,5 +1,6 @@
 const paths = require('./paths');
 const nodeExternals = require('webpack-node-externals');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 // TODO: Don't use `projectBuild` but a temporary directory instead
@@ -52,8 +53,7 @@ module.exports = {
     ]
   },
   plugins: [
-    // We're using the `context` property in addition to the `from` property to
-    // not throw any errors when the "assets" folder doesn't exist.
+    new CleanWebpackPlugin([paths.projectBuild], { root: paths.projectRoot }),
     new CopyWebpackPlugin([
       {
         context: paths.projectAssets,
