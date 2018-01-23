@@ -8,6 +8,9 @@
     "lint": "eslint .",
     "format": "prettier --write './**/*.{js,json}'"
   },
+  "engines": {
+    "node": ">=6.0.0"
+  },
   "dependencies": {
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.1.2",
