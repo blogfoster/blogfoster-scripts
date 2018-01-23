@@ -9,6 +9,7 @@ module.exports = {
     'import/no-dynamic-require': 'off',
     'import/newline-after-import': 'off',
     'import/prefer-default-export': 'off',
-    'import/max-dependencies': 'off'
+    'import/max-dependencies': 'off',
+    'prefer-template': 'off'
   }
 };
