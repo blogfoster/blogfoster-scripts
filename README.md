@@ -2,7 +2,7 @@
 
 > Single-command, zero-config tooling for Node.js projects
 
-`blogfoster-scripts` is a thin wrapper around some of our favorite JavaScript tools. It unifies developer experience across multiple Node.js projects by hiding other tools and their configs. A minimal CLI with subcommands like `lint`, `format`, and `build` lets us manage tooling for multiple projects much easier. Also, developers don't need to waste time by copy-pasting boilerplate code around just to get tooling working.
+`blogfoster-scripts` is a thin wrapper around some of our favorite JavaScript tools. It unifies developer experience across multiple Node.js projects by hiding other tools and their configs. A minimal CLI with subcommands like `lint`, `format`, and `build` lets us manage tooling for multiple projects much easier. Also, developers don't need to waste time by copy-pasting boilerplate code around just to get tooling working (see this [blog post](https://medium.com/blogfoster-engineering/how-we-simplified-our-tooling-setup-for-node-js-projects-80b423293b2c)).
 
 ## Installation
 
@@ -59,6 +59,15 @@ blogfoster-scripts build
 ```
 
 Compile JavaScript starting off from `src/index.js` file, copy static assets from `assets` folder and package everything into the `build` folder with Webpack and Babel.
+
+## Related
+- [react-scripts](https://github.com/facebookincubator/create-react-app/tree/master/packages/react-scripts)
+- [kcd-scripts](https://github.com/kentcdodds/kcd-scripts)
+- [neutrino](https://github.com/mozilla-neutrino/neutrino-dev)
+- [ESLint](https://github.com/eslint/eslint)
+- [Prettier](https://github.com/prettier/prettier)
+- [Webpack](https://github.com/webpack/webpack)
+- [Babel](https://github.com/babel/babel)
 
 ## LICENSE
 
