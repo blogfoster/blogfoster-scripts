@@ -1,7 +1,14 @@
 const { spawn } = require('child_process');
+const { existsSync } = require('fs');
 const webpack = require('webpack');
 const paths = require('../config/paths');
 const webpackDevConfig = require(paths.selfWebpackConfigDev);
+
+if (!existsSync(paths.projectIndexJs)) {
+  console.error('`src/index.js` file does not exist.');
+
+  process.exit(1);
+}
 
 const startChildProcess = () =>
   spawn('node', [paths.projectBuildIndexJs], {

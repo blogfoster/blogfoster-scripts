@@ -1,5 +1,12 @@
 const { spawnSync } = require('child_process');
+const { existsSync } = require('fs');
 const paths = require('../config/paths');
+
+if (!existsSync(paths.projectSrc)) {
+  console.error('`src` folder does not exist.');
+
+  process.exit(1);
+}
 
 const supportedOptions = ['--check'];
 const userOption = process.argv.length > 2 ? process.argv[3] : undefined;

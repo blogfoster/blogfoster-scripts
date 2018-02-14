@@ -1,6 +1,13 @@
+const { existsSync } = require('fs');
 const { CLIEngine } = require('eslint');
 const paths = require('../config/paths');
 const baseConfig = require(paths.selfESLintConfig);
+
+if (!existsSync(paths.projectSrc)) {
+  console.error('`src` folder does not exist.');
+
+  process.exit(1);
+}
 
 // Not yet implemented
 const ignorePattern = undefined;
