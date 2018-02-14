@@ -1,3 +1,4 @@
+const helpMessage = require('../util/output/help');
 const script = process.argv.length > 1 ? process.argv[2] : undefined;
 
 switch (script) {
@@ -9,7 +10,7 @@ switch (script) {
     break;
   }
   default: {
-    console.error(`Unknwon script "${script}".`);
+    console.error(helpMessage);
 
     process.exit(1);
   }
