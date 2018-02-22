@@ -16,6 +16,7 @@
     "babel-eslint": "^8.1.2",
     "babel-loader": "^7.1.2",
     "babel-plugin-sitrep": "^1.3.0",
+    "babel-plugin-syntax-trailing-function-commas": "^6.22.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-env": "^1.6.1",
     "chalk": "^2.3.1",
@@ -41,18 +42,22 @@
       "prettier"
     ],
     "rules": {
+      "camelcase": "off",
+      "class-methods-use-this": "off",
       "global-require": "off",
+      "import/max-dependencies": "off",
+      "import/newline-after-import": "off",
+      "import/no-dynamic-require": "off",
+      "import/no-named-as-default": "off",
+      "import/prefer-default-export": "off",
       "no-console": "off",
       "no-underscore-dangle": "off",
-      "import/no-dynamic-require": "off",
-      "import/newline-after-import": "off",
-      "import/prefer-default-export": "off",
-      "import/max-dependencies": "off",
       "prefer-template": "off"
     }
   },
   "prettier": {
     "singleQuote": true,
+    "trailingComma": "all",
     "overrides": [
       {
         "files": "**/*.json",
