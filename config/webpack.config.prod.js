@@ -7,7 +7,7 @@ module.exports = {
   bail: true,
   output: {
     filename: 'index.js',
-    path: paths.projectBuild
+    path: paths.projectBuild,
   },
   entry: paths.projectIndexJs,
   // Don't touch node core modules like "fs", "path", etc.
@@ -19,7 +19,7 @@ module.exports = {
   // When webpack is resolving modules, let it first look up modules in the
   // projects "node_modules" folder and only after that search in our own.
   resolve: {
-    modules: ['node_modules', paths.selfNodeModules]
+    modules: ['node_modules', paths.selfNodeModules],
   },
   module: {
     rules: [
@@ -29,19 +29,29 @@ module.exports = {
         use: {
           loader: require.resolve('babel-loader'),
           options: {
-            presets: [require.resolve('babel-preset-env')],
+            presets: [
+              [
+                require.resolve('babel-preset-env'),
+                {
+                  targets: {
+                    node: '6.10',
+                  },
+                },
+              ],
+            ],
             plugins: [
               require.resolve('babel-plugin-syntax-trailing-function-commas'),
               // TODO: Get rid of "transform-class-properties" when there's a
               // plugin for the class fields proposal
               //
               // https://github.com/babel/proposals/issues/12
-              require.resolve('babel-plugin-transform-class-properties')
-            ]
-          }
-        }
-      }
-    ]
+              require.resolve('babel-plugin-transform-class-properties'),
+              require.resolve('babel-plugin-transform-async-to-generator'),
+            ],
+          },
+        },
+      },
+    ],
   },
   plugins: [
     new CleanWebpackPlugin([paths.projectBuild], { root: paths.projectRoot }),
@@ -49,8 +59,8 @@ module.exports = {
       {
         context: paths.projectAssets,
         from: '**/*',
-        to: paths.projectBuildAssets
-      }
-    ])
-  ]
+        to: paths.projectBuildAssets,
+      },
+    ]),
+  ],
 };

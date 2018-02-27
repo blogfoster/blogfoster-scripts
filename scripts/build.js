@@ -38,7 +38,7 @@ compiler.run((err, stats) => {
 
   console.log(
     stats.toString({
-      colors: true
+      colors: true,
     })
   );
 });

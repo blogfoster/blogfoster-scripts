@@ -13,7 +13,7 @@ if (!existsSync(paths.projectIndexJs)) {
 const startChildProcess = () =>
   spawn('node', [paths.projectBuildIndexJs], {
     cwd: paths.projectSrc,
-    stdio: 'inherit'
+    stdio: 'inherit',
   });
 
 // There's a bug in webpack where it compiles multiple times when the entry file
@@ -64,7 +64,7 @@ compiler.watch(watchOptions, (err, stats) => {
 
   console.log(
     stats.toString({
-      colors: true
+      colors: true,
     })
   );
 

@@ -13,6 +13,6 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'no-console': 'off',
     'no-underscore-dangle': 'off',
-    'prefer-template': 'off'
-  }
+    'prefer-template': 'off',
+  },
 };
