@@ -11,5 +11,7 @@ module.exports = `
 
   ${chalk.gray('Options:')}
 
+    -h, --help            Output usage information
+    -v, --version         Out the version number
     --check               Only check for issues without fixing them
 `;
