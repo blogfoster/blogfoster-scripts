@@ -1,17 +1,21 @@
+const { existsSync } = require('fs');
 const { CLIEngine } = require('eslint');
 const paths = require('../config/paths');
 const baseConfig = require(paths.selfESLintConfig);
 
-const ignorePattern = ['node_modules', 'build'];
 const optionalArg = process.argv[3];
 const shouldFix = optionalArg !== '--check';
+const hasIgnoreOverride = existsSync(paths.projectESLintIgnore);
+const ignorePath = hasIgnoreOverride
+  ? paths.projectESLintIgnore
+  : paths.selfESLintIgnore;
 
 const engine = new CLIEngine({
   cwd: paths.projectRoot,
   baseConfig,
-  ignorePattern,
+  ignorePath,
   useEslintrc: false,
-  fix: shouldFix
+  fix: shouldFix,
 });
 
 const report = engine.executeOnFiles([paths.projectRoot]);
