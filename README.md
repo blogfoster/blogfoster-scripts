@@ -58,7 +58,7 @@ By default, `blogfoster-scripts format` will try to fix any fixable formatting i
 blogfoster-scripts build
 ```
 
-Compile JavaScript starting off from `src/index.js` file, copy static assets from `assets` folder and package everything into the `build` folder with Webpack and Babel.
+Compile JavaScript starting off from the `/src/index.js` file, copy static assets from the `/assets` folder and package everything into the `/build` folder with Webpack and Babel.
 
 ## Related
 - [react-scripts](https://github.com/facebookincubator/create-react-app/tree/master/packages/react-scripts)
