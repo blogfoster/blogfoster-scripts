@@ -1,7 +1,13 @@
-const { existsSync } = require('fs');
+const { existsSync, readFileSync } = require('fs');
 const { CLIEngine } = require('eslint');
 const paths = require('../config/paths');
 const baseConfig = require(paths.selfESLintConfig);
+
+function getGlobPatternsToIgnore(ignorePath) {
+  const contents = readFileSync(ignorePath, { encoding: 'utf8' });
+
+  return contents.split('\n').filter(Boolean);
+}
 
 const optionalArg = process.argv[3];
 const shouldFix = optionalArg !== '--check';
@@ -9,11 +15,12 @@ const hasIgnoreOverride = existsSync(paths.projectESLintIgnore);
 const ignorePath = hasIgnoreOverride
   ? paths.projectESLintIgnore
   : paths.selfESLintIgnore;
+const ignorePattern = getGlobPatternsToIgnore(ignorePath);
 
 const engine = new CLIEngine({
   cwd: paths.projectRoot,
   baseConfig,
-  ignorePath,
+  ignorePattern,
   useEslintrc: false,
   fix: shouldFix,
 });
