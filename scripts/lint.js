@@ -1,5 +1,6 @@
 const { existsSync, readFileSync } = require('fs');
 const { CLIEngine } = require('eslint');
+const mri = require('mri');
 const paths = require('../config/paths');
 const baseConfig = require(paths.selfESLintConfig);
 
@@ -9,8 +10,12 @@ function getGlobPatternsToIgnore(ignorePath) {
   return contents.split('\n').filter(Boolean);
 }
 
-const optionalArg = process.argv[3];
-const shouldFix = optionalArg !== '--check';
+const args = mri(process.argv.slice(2), {
+  boolean: 'check',
+});
+const subcommandOrTarget = args._[args._.length - 1];
+const hasTarget = subcommandOrTarget !== 'lint';
+const target = hasTarget ? subcommandOrTarget : paths.projectRoot;
 const hasIgnoreOverride = existsSync(paths.projectESLintIgnore);
 const ignorePath = hasIgnoreOverride
   ? paths.projectESLintIgnore
@@ -22,13 +27,13 @@ const engine = new CLIEngine({
   baseConfig,
   ignorePattern,
   useEslintrc: false,
-  fix: shouldFix,
+  fix: !args.check,
 });
 
-const report = engine.executeOnFiles([paths.projectRoot]);
+const report = engine.executeOnFiles([target]);
 let errorCount = report.errorCount;
 
-if (shouldFix) {
+if (!args.check) {
   // Write any fixes to disk
   CLIEngine.outputFixes(report);
   errorCount -= report.fixableErrorCount;

@@ -1,22 +1,26 @@
 const { existsSync } = require('fs');
 const { spawnSync } = require('child_process');
+const mri = require('mri');
 const paths = require('../config/paths');
 
-const supportedOptions = ['--check'];
-const userOption = process.argv.length > 2 ? process.argv[3] : undefined;
-const option = supportedOptions.includes(userOption) ? userOption : undefined;
+const args = mri(process.argv.slice(2), {
+  boolean: 'check',
+});
+const subcommandOrTarget = args._[args._.length - 1];
+const hasTarget = subcommandOrTarget !== 'format';
+const target = hasTarget ? subcommandOrTarget : `**/*.{js,json,md}`;
 const hasIgnoreOverride = existsSync(paths.projectPrettierIgnore);
 const ignorePath = hasIgnoreOverride
   ? paths.projectPrettierIgnore
   : paths.selfPrettierIgnore;
 
 const prettierArgs = [
-  option === '--check' ? '--list-different' : '--write',
+  args.check ? '--list-different' : '--write',
   '--config',
   paths.selfPrettierConfig,
   '--ignore-path',
   ignorePath,
-  `**/*.{js,json}`,
+  target,
 ];
 
 const result = spawnSync(paths.projectPrettier, prettierArgs, {
