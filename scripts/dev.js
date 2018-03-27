@@ -4,17 +4,18 @@ const webpack = require('webpack');
 const paths = require('../config/paths');
 const webpackDevConfig = require(paths.selfWebpackConfigDev);
 
+function startChildProcess() {
+  return spawn('node', [paths.projectBuildIndexJs], {
+    cwd: paths.projectSrc,
+    stdio: 'inherit',
+  });
+}
+
 if (!existsSync(paths.projectIndexJs)) {
   console.error('`src/index.js` file does not exist.');
 
   process.exit(1);
 }
-
-const startChildProcess = () =>
-  spawn('node', [paths.projectBuildIndexJs], {
-    cwd: paths.projectSrc,
-    stdio: 'inherit',
-  });
 
 // There's a bug in webpack where it compiles multiple times when the entry file
 // changed right before the watch started. This is a workaround to prevent
