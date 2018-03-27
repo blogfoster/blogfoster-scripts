@@ -27,6 +27,7 @@ After that, you can use it with `npx` or by defining scripts in your `package.js
 ```sh
 blogfoster-scripts lint
 ```
+
 Check your code for linting issues with ESLint and fix all (fixable) issues.
 
 ### --check
@@ -42,6 +43,7 @@ By default, `blogfoster-scripts lint` will try to fix any fixable linting issues
 ```sh
 blogfoster-scripts format
 ```
+
 Check your code for formatting issues with Prettier and fix all (fixable) issues.
 
 ### --check
@@ -61,13 +63,14 @@ blogfoster-scripts build
 Compile JavaScript starting off from the `/src/index.js` file, copy static assets from the `/assets` folder and package everything into the `/build` folder with Webpack and Babel.
 
 ## Related
-- [react-scripts](https://github.com/facebookincubator/create-react-app/tree/master/packages/react-scripts)
-- [kcd-scripts](https://github.com/kentcdodds/kcd-scripts)
-- [neutrino](https://github.com/mozilla-neutrino/neutrino-dev)
-- [ESLint](https://github.com/eslint/eslint)
-- [Prettier](https://github.com/prettier/prettier)
-- [Webpack](https://github.com/webpack/webpack)
-- [Babel](https://github.com/babel/babel)
+
+* [react-scripts](https://github.com/facebookincubator/create-react-app/tree/master/packages/react-scripts)
+* [kcd-scripts](https://github.com/kentcdodds/kcd-scripts)
+* [neutrino](https://github.com/mozilla-neutrino/neutrino-dev)
+* [ESLint](https://github.com/eslint/eslint)
+* [Prettier](https://github.com/prettier/prettier)
+* [Webpack](https://github.com/webpack/webpack)
+* [Babel](https://github.com/babel/babel)
 
 ## LICENSE
 
