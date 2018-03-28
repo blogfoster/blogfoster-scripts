@@ -1,4 +1,8 @@
 module.exports = {
+  env: {
+    jest: true,
+    mocha: true,
+  },
   extends: ['blogfoster', 'prettier'],
   // Turn off rules that are too strict
   // TODO: Remove these rules when we updated eslint-config-blogfoster
