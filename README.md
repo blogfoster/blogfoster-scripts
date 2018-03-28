@@ -2,7 +2,7 @@
 
 > Single-command, zero-config tooling for Node.js projects
 
-`blogfoster-scripts` is a thin wrapper around some of our favorite JavaScript tools. It unifies developer experience across multiple Node.js projects by hiding other tools and their configs. A minimal CLI with subcommands like `lint`, `format`, and `build` lets us manage tooling for multiple projects much easier. Also, developers don't need to waste time by copy-pasting boilerplate code around just to get tooling working (see this [blog post](https://medium.com/blogfoster-engineering/how-we-simplified-our-tooling-setup-for-node-js-projects-80b423293b2c)).
+`blogfoster-scripts` is a wrapper around some of our favorite JavaScript tools. It unifies developer experience across multiple Node.js projects by hiding other tools and their configs. A CLI with subcommands like `lint`, `format`, and `build` lets us manage tooling for multiple projects much easier. Also, developers don't need to waste time by copy-pasting boilerplate code around just to get tooling working. For more details, check out this [blog post](https://medium.com/blogfoster-engineering/how-we-simplified-our-tooling-setup-for-node-js-projects-80b423293b2c).
 
 ## Installation
 
@@ -25,34 +25,42 @@ After that, you can use it with `npx` or by defining scripts in your `package.js
 ### lint
 
 ```sh
-blogfoster-scripts lint
+blogfoster-scripts lint <target>
 ```
 
 Check your code for linting issues with ESLint and fix all (fixable) issues.
 
-### --check
+### `--check`
 
 ```sh
-blogfoster-scripts lint --check
+blogfoster-scripts lint --check <target>
 ```
 
 By default, `blogfoster-scripts lint` will try to fix any fixable linting issues. With the `--check` argument it will only check your code for issues and exit with a non-zero exit code if there are any.
 
+### `<target>`
+
+Optional file or glob pattern that defines the target to lint. Defaults to `**/*.js`. Files in `/node_modules` or `/build` are ignored. If you want to specify more patterns to ignore you can create a `.eslintignore` file in the root of your project.
+
 ### format
 
 ```sh
-blogfoster-scripts format
+blogfoster-scripts format <target>
 ```
 
 Check your code for formatting issues with Prettier and fix all (fixable) issues.
 
-### --check
+### `--check`
 
 ```sh
-blogfoster-scripts format --check
+blogfoster-scripts format --check <target>
 ```
 
 By default, `blogfoster-scripts format` will try to fix any fixable formatting issues. With the `--check` argument it will only check your code for issues and exit with a non-zero exit code if there are any.
+
+### `<target>`
+
+Optional file or glob pattern that defines the target to format. Defaults to `**/*.{js,json,md}`. The `package.json`, `package-lock.json`, and files in `/node_modules` or `/build` are ignored. If you want to specify more patterns to ignore you can create a `.prettierignore` file in the root of your project.
 
 ### build
 
