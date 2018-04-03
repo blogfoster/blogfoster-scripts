@@ -6,9 +6,9 @@ const paths = require('../config/paths');
 const args = mri(process.argv.slice(2), {
   boolean: 'check',
 });
-const subcommandOrTarget = args._[args._.length - 1];
-const hasTarget = subcommandOrTarget !== 'format';
-const target = hasTarget ? subcommandOrTarget : `**/*.{js,json,md}`;
+const subcommandOrFirstTarget = args._[1];
+const hasTarget = subcommandOrFirstTarget !== 'format';
+const targets = hasTarget ? args._.slice(1) : `**/*.{js,json,md}`;
 const hasIgnoreOverride = existsSync(paths.projectPrettierIgnore);
 const ignorePath = hasIgnoreOverride
   ? paths.projectPrettierIgnore
@@ -20,8 +20,7 @@ const prettierArgs = [
   paths.selfPrettierConfig,
   '--ignore-path',
   ignorePath,
-  target,
-];
+].concat(targets);
 
 const result = spawnSync(paths.projectPrettier, prettierArgs, {
   env: process.env,
