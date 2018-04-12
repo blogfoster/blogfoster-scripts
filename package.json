@@ -4,6 +4,10 @@
   "bin": {
     "blogfoster-scripts": "./bin/index.js"
   },
+  "files": [
+    "eslint.js",
+    "prettier.js"
+  ],
   "scripts": {
     "lint": "eslint .",
     "format": "prettier --write './**/*.{js,json,md}'"

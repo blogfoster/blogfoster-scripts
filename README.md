@@ -20,6 +20,20 @@ After that, you can use it with `npx` or by defining scripts in your `package.js
 }
 ```
 
+## Editor integration
+
+To have editor integrations work for ESLint or Prettier you can create `.js` config files at the root level of your project that export the configs of this module:
+
+```js
+// .eslintrc.js
+module.exports = require('blogfoster-scripts/eslint');
+```
+
+```js
+// prettier.config.js
+module.exports = require('blogfoster-scripts/prettier');
+```
+
 ## Commands
 
 ### lint
