@@ -1,6 +1,6 @@
 {
   "name": "blogfoster-scripts",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "bin": {
     "blogfoster-scripts": "./bin/index.js"
   },
